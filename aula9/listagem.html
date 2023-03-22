@@ -2,7 +2,7 @@
 <html lang= "pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
         //está pegando o elemento tabela do HTML.
        let tabela = document.querySelector("#produtos");
 
-       function inserirLinha(nome,marca, preco){
+       function inserirLinha(nome,marca, preco, img){
        // vamos criar uma linha nessa tabela
        let linha = tabela.insertRow();
 
@@ -29,22 +29,32 @@
        let celNome  = linha.insertCell();
        let celMarca = linha.insertCell();
        let celPreco = linha.insertCell();
+       let celImg   = linha.insertCell();
 
        //colocar valores na cécula
        celNome.innerHTML  = nome;
        celMarca.innerHTML = marca;
        celPreco.innerHTML = preco;
+
+       var imagem= document.createElement("img");
+       imagem.setAttribute ("src", img);
+       celImg.append(imagem);
+
        }
        
        // fetch abre um URL
-       fetch("http://localhost/3infob/isadora/conteudo_backend/aula9/produtos.php")
+       fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
        .then($resposta => $resposta.json())
        .then($json =>{
-        for(var i = 0; i<3; i++){  
-            inserirLinha($json [i]["nome"],
-            $json[i]["marca"], $json[i]["preco"]); 
-
-        }
+        console.log($json);
+        for (var produto of $json){
+            inserirLinha(
+                produto["name"],
+                produto["brand"],
+                produto["price"],
+                produto["image_link"]
+            );
+       }
        });
 
     </script>
