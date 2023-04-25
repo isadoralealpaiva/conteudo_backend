@@ -4,7 +4,7 @@
 
 <?php
 $id = $_GET["id"];
-$noticia = $noticia[0];
+$noticia = $noticias[$id];
 
 ?>
  
