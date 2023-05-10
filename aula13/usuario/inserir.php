@@ -3,20 +3,29 @@
 //Importa o arquivo de conexão
 require_once "../conexao.php";
 
-//pegar os valores enviados do formulario
-$nome = $_POST["nome"];
-$login = $_POST["login"];
-$senha = $_POST["senha"];
+
+if(isset($_POST['nome']) && isset($_POST['login']) && isset ($_POST['senha'])){
+    $nome = $_POST["nome"];
+    $login = $_POST["login"];
+    $senha = password_hash ($_POST["senha"], PASSWORD_BCRYPT);
 
 
-//Cria uma variavel com o comando SQL
-$SQL = "INSERT INTO `usuario` (`nome`, `login`, `senha`) VALUES ('$nome', '$login', '$senha');";
+    //Cria uma variavel com o comando SQL
+    $SQL = "INSERT INTO `usuario` (`nome`, `login`, `senha`) VALUES ('$nome', '$login', '$senha');";
 
-echo $SQL;
+    echo $SQL;
 
-//Prepara o comando para ser executado no mysql
-$comando = $conexao->prepare($SQL);
+    //Prepara o comando para ser executado no mysql
+    $comando = $conexao->prepare($SQL);
 
-//Executa  comando
-$comando->execute();
+    //Faz a vinculação dos parametros ?,?,?
+    $comando->bind_param("sss", $nome, $login,$senha);
+
+    //Executa  comando
+    $comando->execute();
+
+
+ }
+ //Volta para o formulario
+ header("Location: ../form_usuario.php");
 

@@ -81,7 +81,7 @@ $noticias = [$noticia1,$noticia2,$noticia3,$noticia4,$noticia5,$noticia6,$notici
   // em outras palavras verifica se foi enviado o parametro
   //assunto pela URL
 
-  if(isset($assunto = $G_get ["assunto"])){
+  if(isset($_GET["assunto"])){
     $noticias= array_filter($noticias, function($noticia){
         global $assunto;
         return $noticia["assunto"]== $assunto;

@@ -13,6 +13,7 @@ $conexao = new mysqli ($host,
                        $password,
                        $database,
                        $port);
+//Vetifica se existe erros na conexão
 if($conexao->connect_error){
     echo $coneexao->connect_error;
     die();
