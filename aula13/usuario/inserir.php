@@ -1,7 +1,7 @@
 <?php
    
    //importa o arquivo de conexão
-   require_once "../conexao.php";
+   require_once "conexao.php";
 
    if(isset($_POST['nome']) && isset($_POST['login']) && isset($_POST['senha'])){
    $nome = $_POST['nome'];
