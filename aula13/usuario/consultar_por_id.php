@@ -24,6 +24,7 @@
    
    //pega a primeira linha de resultado da consulta
    $usuario = $resultados->fetch_object();
+   $usuarios[]= $usuario;
 
    }
 
