@@ -1,6 +1,6 @@
 <?php
-    require_once "conexao.php";
-    require_once "usuario/consultar_por_id.php";
+    require_once "../banco/conexao.php";
+    require_once "consultar_por_id.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,23 +12,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Cadastro de usuário</h1>
+    <h1>Cadastro de Noticia</h1>
     <hr>
 
-    <form action="<?php echo isset ($usuario)?"usuario/atualizar.php" : "usuario/inserir.php";?>"
+    <form action="<?php echo isset ($noticia)?"atualizar.php" : "inserir.php";?>"
 
     method="post" enctype="multipart/form-data">
         
-        <input type="hidden" name="idusuario" value="<?php echo $usuario->idusuario?? "";?>"><br>
+        <input type="hidden" name="idnoticia" value="<?php echo $noticia->idnoticia?? "";?>"><br>
 
         <label>Nome</label><br>
-        <input type="text" name="nome" value="<?php echo $usuario->nome ?? "";?>"><br>
+        <input type="text" name="titulo" value="<?php echo $noticia->titulo ?? "";?>"><br>
 
         <label>Login</label><br>
-        <input type="text" name="login" value="<?php echo $usuario->login ?? "";?>"><br>
+        <input type="text" name="materia" value="<?php echo $noticia->materia ?? "";?>"><br>
 
         <label>Senha</label><br>
-        <input type="password" name="senha"><br>
+        <input type="text" name="categoria"><br>
 
         <label>foto</label><br>
         <input type="file" name="foto"><br>
