@@ -16,9 +16,9 @@
    $resultados = $comando->get_result();
    
    //pega a primeira linha de resultado da consulta
-   $usuarios = [];
+   $noticias = [];
    while($noticia = $resultados->fetch_object()){
-      $noticas[] = $noticia;
+      $noticias[] = $noticia;
    }
 
 
