@@ -2,6 +2,7 @@
    
    //importa o arquivo de conexão
    require_once "../banco/conexao.php";
+   require_once "../login/controlar_acesso.php";
 
    $id = $_POST['idnoticia'];
    $nome = $_POST['titulo'];
